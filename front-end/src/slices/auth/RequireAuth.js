@@ -4,10 +4,10 @@ import { selectCurrentToken } from './authSlice';
 
 const RequireAuth = () => {
   let token = useSelector(selectCurrentToken);
-  let savedToken = localStorage.getItem('currentToken');
-  if (!token && savedToken) {
-    token = savedToken;
-  }
+  // let savedToken = localStorage.getItem('currentToken');
+  // if (!token && savedToken) {
+  //   token = savedToken;
+  // }
 
   // récupérer l'emplacement dans la navigation
   const location = useLocation();

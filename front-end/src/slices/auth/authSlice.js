@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+// import { UserService } from '../../services/user.service';
 
 const authSlice = createSlice({
   // nom du slice
@@ -8,22 +9,27 @@ const authSlice = createSlice({
   // interractions avec l'état du slice
   reducers: {
     // une fonction d'identification
-    setCredentials: (state, action) => {
+    logIn: (state, action) => {
+      // const { email, pwd } = action.payload;
+      // const userService = new UserService();
+      // const userData = userService.login({ email, pwd }).then((res) => console.log(res));
+
+      // state.user = email;
+      // state.token = userData.data.body.token;
+      /////////////
       const { user, accessToken } = action.payload;
       state.user = user;
       state.token = accessToken;
-      // console.log('token authSlice : ', accessToken);
     },
-    // une fonction de déconnexion, pour réinitialiser le state du slice
+    // une fonction de déconnexion
     logOut: (state, action) => {
-      state.user = null;
-      state.token = null;
+      localStorage.removeItem('redux');
     },
   },
 });
 
 // export des fonctions qui sont contenues dans authSlice.actions
-export const { setCredentials, logOut } = authSlice.actions;
+export const { logIn, logOut } = authSlice.actions;
 
 // export du reducer
 export default authSlice.reducer;
