@@ -1,12 +1,12 @@
 // import { useState } from 'react';
 // import { useEffect } from 'react';
-import { selectCurrentToken } from '../../slices/auth/authSlice';
-import { selectFirstNameUser, selectLastNameUser } from '../../slices/user/userSlice';
+import { selectCurrentToken } from '../../store/slices/auth/authSlice';
+import { selectFirstNameUser, selectLastNameUser } from '../../store/slices/user/userSlice';
 // import { useNavigate } from 'react-router-dom';
 import { UserService } from '../../services/user.service';
 import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '../../slices/user/userSlice';
+import { setUser } from '../../store/slices/user/userSlice';
 // import { setCredentials } from '../../slices/auth/authSlice';
 
 const DashboardPage = () => {

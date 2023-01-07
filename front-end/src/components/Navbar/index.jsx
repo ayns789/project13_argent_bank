@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 // import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentToken } from '../../slices/auth/authSlice';
-import { logOut } from '../../slices/auth/authSlice';
+import { selectCurrentToken } from '../../store/slices/auth/authSlice';
+import { logOut } from '../../store/slices/auth/authSlice';
 
 const Navbar = () => {
   // const location = useLocation();

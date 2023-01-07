@@ -1,7 +1,9 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import authReducer from '../slices/auth/authSlice';
-import userReducer from '../slices/user/userSlice';
+// import { applyMiddleware } from 'redux';
+import authReducer from './slices/auth/authSlice';
+import userReducer from './slices/user/userSlice';
 import { loadState } from '../services/browserStorage.ts';
+// import { extraReducers, addMatcher } from 'redux-thunk';
 // import { getDefaultMiddleware } from '@reduxjs/toolkit';
 
 const combinedReducer = combineReducers({
@@ -12,13 +14,14 @@ const combinedReducer = combineReducers({
 const rootReducer = (state, action) => {
   if (action.type === 'auth/logOut') {
     state = undefined;
-    localStorage.clear();
+    localStorage.removeItem('redux');
   }
   return combinedReducer(state, action);
 };
 
 export const store = configureStore({
   reducer: rootReducer,
+  // applyMiddleware(thunk, extraReducers),
   preloadedState: loadState(),
 
   // en production, devtools doit etre false

@@ -6,8 +6,8 @@ import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import { Routes, Route } from 'react-router-dom';
-import Layout from './slices/auth/Layout';
-import RequireAuth from './slices/auth/RequireAuth';
+import Layout from './store/slices/auth/Layout';
+import RequireAuth from './store/slices/auth/RequireAuth';
 
 function App() {
   return (

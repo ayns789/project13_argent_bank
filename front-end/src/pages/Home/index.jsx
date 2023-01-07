@@ -5,6 +5,8 @@ import icnMoney from '../../assets/icon-money.png';
 import icnSecurity from '../../assets/icon-security.png';
 
 const HomePage = () => {
+  // const logov4 = require('https://unsplash.com/fr/photos/l2LCcuHeQqY').default;
+
   return (
     <main>
       <div className='hero'>
@@ -15,6 +17,14 @@ const HomePage = () => {
           <p className='subtitle'>High interest rates.</p>
           <p className='text'>Open a savings account with Argent Bank today!</p>
         </section>
+      </div>
+      <div>
+        <img
+          src='https://unsplash.com/fr/photos/l2LCcuHeQqY'
+          alt='test'
+          style={{ width: '400px' }}
+        />
+        {/* {logov4} */}
       </div>
       <section className='features'>
         <h2 className='sr-only'>Features</h2>

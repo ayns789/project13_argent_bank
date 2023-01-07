@@ -2,8 +2,9 @@ import { FaUserCircle } from 'react-icons/fa';
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../slices/auth/authSlice';
-import { UserService } from '../../services/user.service';
+// import { logIn } from '../../store/slices/auth/authSlice';
+import { getLogin } from '../../store/slices/auth/authSlice';
+// import { UserService } from '../../services/user.service';
 
 const LoginPage = () => {
   // éléments du formulaire
@@ -13,6 +14,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
   // navigation
   const navigate = useNavigate();
   // accès au reducer, sert à déclencher les actions du reducer
@@ -34,19 +36,16 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const userService = new UserService();
-      const userData = await userService.login(email, pwd);
+      // const userService = new UserService();
+      // const userData = await userService.login(email, pwd);
 
       // console.log('user : ', userData);
 
-      // console.log(email, pwd);
-      // dispatch(logIn({ email, pwd }));
-      // dispatch(logIn({ email: email, pwd: pwd }));
-      // dispatch(logIn(email, pwd));
-      // dispatch(logIn({ user: email, pwd }));
-      // dispatch(logIn({ user: email, pwd: pwd }));
+      // dispatch(
+      //   logIn({ accessToken: userData.data.body.token, user: email, rememberMe, connecting: true })
+      // );
 
-      dispatch(logIn({ accessToken: userData.data.body.token, user: email }));
+      dispatch(getLogin({ email, pwd, rememberMe }));
 
       setEmail('');
       setPwd('');
@@ -69,6 +68,10 @@ const LoginPage = () => {
   const handleUserInput = (e) => setEmail(e.target.value);
 
   const handlePwdInput = (e) => setPwd(e.target.value);
+
+  const toggleRememberMe = () => {
+    setRememberMe((current) => !current);
+  };
 
   return (
     <>
@@ -93,7 +96,7 @@ const LoginPage = () => {
                 ref={userRef}
                 value={email}
                 onChange={handleUserInput}
-                autoComplete='off'
+                // autoComplete='off'
                 required
               />
             </div>
@@ -102,7 +105,7 @@ const LoginPage = () => {
               <input type='password' id='password' onChange={handlePwdInput} value={pwd} required />
             </div>
             <div className='input-remember'>
-              <input type='checkbox' id='remember-me' />
+              <input type='checkbox' id='remember-me' onChange={toggleRememberMe} />
               <label htmlFor='remember-me'>Remember me</label>
             </div>
             <button className='sign-in-button'>Sign In</button>
@@ -112,5 +115,6 @@ const LoginPage = () => {
     </>
   );
 };
+// onChange={toggleRememberMe}
 
 export default LoginPage;
